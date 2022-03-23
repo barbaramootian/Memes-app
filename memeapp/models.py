@@ -51,34 +51,34 @@ class Image(models.Model):
         return self.image_name
 
 
-# class Profile(models.Model):
-#     user = models.OneToOneField(User, on_delete=models.CASCADE)
-#     bio = models.TextField(max_length=1200, null=True, blank=True)
-#     profile_photo = CloudinaryField('image')
-#     created_on = models.DateTimeField(auto_now_add=True)
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    bio = models.TextField(max_length=1200, null=True, blank=True)
+    profile_photo = CloudinaryField('image')
+    created_on = models.DateTimeField(auto_now_add=True)
 
-#     class Meta:
-#         ordering = ['-created_on']
+    class Meta:
+        ordering = ['-created_on']
 
-#     def save_profile(self):
-#         self.save()
+    def save_profile(self):
+        self.save()
 
-#     def update_profile(self, user, bio, profile_photo):
-#         self.user = user
-#         self.bio = bio
-#         self.profile_photo = profile_photo
-#         self.save()
+    def update_profile(self, user, bio, profile_photo):
+        self.user = user
+        self.bio = bio
+        self.profile_photo = profile_photo
+        self.save()
 
-#     def delete_profile(self):
-#         self.delete()
+    def delete_profile(self):
+        self.delete()
 
-#     @classmethod
-#     def filter_profile_by_user(cls, user):
-#         profile_output = cls.objects.filter(user=user)
-#         return profile_output
+    @classmethod
+    def filter_profile_by_user(cls, user):
+        profile_output = cls.objects.filter(user=user)
+        return profile_output
 
-#     def __str__(self):
-#         return self.user
+    def __str__(self):
+        return self.user
 
 
 # class Likes(models.Model):
