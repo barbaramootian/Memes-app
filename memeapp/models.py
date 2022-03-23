@@ -104,33 +104,33 @@ class Likes(models.Model):
         return self.user
 
 
-# # comments model
-# class Comments(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-#     image = models.ForeignKey(Image, on_delete=models.CASCADE)
-#     comment = models.TextField(max_length=250)
-#     created_on = models.DateTimeField(auto_now_add=True)
+# comments model
+class Comments(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ForeignKey(Image, on_delete=models.CASCADE)
+    comment = models.TextField(max_length=250)
+    created_on = models.DateTimeField(auto_now_add=True)
 
-#     class Meta:
-#         ordering = ['-created_on']
+    class Meta:
+        ordering = ['-created_on']
 
-#     def save_comment(self):
-#         self.save()
+    def save_comment(self):
+        self.save()
 
-#     def update_comment(self, user, image, comment):
-#         self.user = user
-#         self.image = image
-#         self.comment = comment
-#         self.save()
+    def update_comment(self, user, image, comment):
+        self.user = user
+        self.image = image
+        self.comment = comment
+        self.save()
 
-#     def delete_comment(self):
-#         self.delete()
+    def delete_comment(self):
+        self.delete()
 
-#     @classmethod
-#     def get_comment_by_id(cls, id):
-#         comment_result = cls.objects.get(idna=id)
-#         return comment_result
+    @classmethod
+    def get_comment_by_id(cls, id):
+        comment_result = cls.objects.get(idna=id)
+        return comment_result
 
-#     def __str__(self):
-#         return self.comment
+    def __str__(self):
+        return self.comment
 
