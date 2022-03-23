@@ -81,27 +81,27 @@ class Profile(models.Model):
         return self.user
 
 
-# class Likes(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-#     image = models.ForeignKey(Image, on_delete=models.CASCADE)
-#     created_on = models.DateTimeField(auto_now_add=True)
+class Likes(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ForeignKey(Image, on_delete=models.CASCADE)
+    created_on = models.DateTimeField(auto_now_add=True)
 
-#     class Meta:
-#         ordering = ['-created_on']
+    class Meta:
+        ordering = ['-created_on']
 
-#     def save_likes(self):
-#         self.save()
+    def save_likes(self):
+        self.save()
 
-#     def update_likes(self, user, image):
-#         self.user = user
-#         self.image = image
-#         self.save()
+    def update_likes(self, user, image):
+        self.user = user
+        self.image = image
+        self.save()
 
-#     def delete_likes(self):
-#         self.delete()
+    def delete_likes(self):
+        self.delete()
 
-#     def __str__(self):
-#         return self.user
+    def __str__(self):
+        return self.user
 
 
 # # comments model
