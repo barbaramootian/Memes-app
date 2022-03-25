@@ -10,8 +10,8 @@ class Image(models.Model):
     image_caption = models.TextField(max_length=1000)
     image = CloudinaryField('image')
     profile = models.ForeignKey(User, on_delete=models.CASCADE,null=True,blank="True")
-    likes_number = models.IntegerField(default=0)
-    comments_number = models.IntegerField(default=0)
+    likes_number = models.IntegerField(default=0,null=True,blank="True")
+    comments_number = models.IntegerField(default=0,null=True,blank="True")
     created_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -52,7 +52,7 @@ class Image(models.Model):
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE,null=True)
     bio = models.TextField(max_length=1200, null=True, blank=True)
     profile_photo = CloudinaryField('image')
     created_on = models.DateTimeField(auto_now_add=True)
@@ -80,9 +80,8 @@ class Profile(models.Model):
     def __str__(self):
         return self.user
 
-
 class Likes(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE )
     image = models.ForeignKey(Image, on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)
 
